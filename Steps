@@ -1,0 +1,17 @@
+cd ~/SecuringBGP/basic-network
+docker stop $(docker ps -aq)
+./teardown.sh
+./start.sh
+cd ~/SecuringBGP/commercial-paper/organization/magnetocorp/configuration/cli/
+./monitordocker.sh net_basic
+
+
+cd ~/SecuringBGP/commercial-paper/organization/magnetocorp/configuration/cli/
+docker-compose -f docker-compose.yml up -d cliMagnetoCorp
+
+cd ~/SecuringBGP/commercial-paper/organization/magnetocorp/contract
+docker exec cliMagnetoCorp peer chaincode install -n communitycontract -v 0 -p /opt/gopath/src/github.com/contract -l node
+docker exec cliMagnetoCorp peer chaincode instantiate -n communitycontract -v 0 -l node -c '{"Args":["org.papernet.commercialpaper:instantiate"]}' -C mychannel -P "AND ('Org1MSP.member')"
+
+cd ~/SecuringBGP/commercial-paper/organization/magnetocorp/application/
+node issue.js
