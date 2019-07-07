@@ -42,7 +42,7 @@ class Community extends State {
     }
 
     static getClass() {
-        return 'org.papernet.commercialpaper';
+        return 'securingBGP.community';
     }
 }
 

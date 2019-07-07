@@ -32,7 +32,7 @@ class CommunityContract extends Contract {
 
     constructor() {
         // Unique namespace when multiple contracts per chaincode file
-        super('org.papernet.commercialpaper');
+        super('securingBGP.community');
     }
 
     /**

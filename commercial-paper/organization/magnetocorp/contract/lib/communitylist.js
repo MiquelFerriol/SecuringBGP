@@ -12,7 +12,7 @@ const Community = require('./community.js');
 class CommunityList extends StateList {
 
     constructor(ctx) {
-        super(ctx,'org.papernet.commercialpaper');
+        super(ctx,'securingBGP.community');
         this.use(Community);
     }
 
