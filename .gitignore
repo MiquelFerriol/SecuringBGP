@@ -1,2 +1,9 @@
-
+organization/AS1/application/node_modules/
+organization/AS1/contract/node_modules/
+organization/AS1/identity/user/
+organization/digibank/application/node_modules/
+organization/digibank/contract/node_modules/
+organization/digibank/identity/user/
+package-lock.json
+.vscode
 \.idea/
