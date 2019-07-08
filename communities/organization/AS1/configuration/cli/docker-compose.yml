@@ -11,8 +11,8 @@ networks:
       name: net_basic
 
 services:
-  cliMagnetoCorp:
-    container_name: cliMagnetoCorp
+  cliAS1:
+    container_name: cliAS1
     image: hyperledger/fabric-tools
     tty: true
     environment:
@@ -28,7 +28,7 @@ services:
     command: /bin/bash
     volumes:
         - /var/run/:/host/var/run/
-        - ./../../../../organization/magnetocorp:/opt/gopath/src/github.com/
+        - ./../../../../organization/AS1:/opt/gopath/src/github.com/
         - ./../../../../../basic-network/crypto-config:/opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/
     networks:
         - basic

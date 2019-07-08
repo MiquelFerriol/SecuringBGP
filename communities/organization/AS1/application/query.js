@@ -54,7 +54,7 @@ async function main() {
 
         console.log('Submitting transaction.');
 
-        const issueResponse = await contract.submitTransaction('newCommunity', 'AS125', '33', 'NO_EXPORT', 'USA');
+        const issueResponse = await contract.submitTransaction('getCommunity', 'AS125', '33', 'NO_EXPORT', 'USA');
 
         // process response
         console.log('Process issue transaction response.');

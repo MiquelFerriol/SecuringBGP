@@ -1,9 +1,9 @@
-organization/AS1/application/node_modules/
-organization/AS1/contract/node_modules/
-organization/AS1/identity/user/
-organization/digibank/application/node_modules/
-organization/digibank/contract/node_modules/
-organization/digibank/identity/user/
+communities/organization/AS1/application/node_modules/
+communities/organization/AS1/contract/node_modules/
+communities/organization/AS1/identity/user/
+communities/organization/digibank/application/node_modules/
+communities/organization/digibank/contract/node_modules/
+communities/organization/digibank/identity/user/
 package-lock.json
 .vscode
 \.idea/

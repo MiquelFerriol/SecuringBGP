@@ -64,6 +64,7 @@ class CommunityContract extends Contract {
 
         // create an instance of the paper
         let unixts = Math.round((new Date()).getTime() / 1000);
+
         let community = Community.createInstance(autonomousSystem, communityNumber, rule, to, value, unixts);
 
         // Add the paper to the list of all similar commercial papers in the ledger world state
@@ -90,6 +91,9 @@ class CommunityContract extends Contract {
         let communityKey = Community.makeKey([autonomousSystem, communityNumber]);
         let community = await ctx.communityList.getCommunity(communityKey);
 
+        if(community == null){
+            throw new Error('Community ' + autonomousSystem + ':' + communityNumber + ' does not exist');
+        }
         /*// Validate current owner
         if (paper.getOwner() !== currentOwner) {
             throw new Error('Paper ' + issuer + paperNumber + ' is not owned by ' + currentOwner);

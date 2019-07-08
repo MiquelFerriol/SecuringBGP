@@ -65,11 +65,11 @@ channels:
     # operational decisions to share loads from applications among the orderers.  The values must
     # be "names" of orgs defined under "organizations/peers"
     orderers:
-      - orderer.magnetocorp.com
+      - orderer.AS1.com
 
     # Required. list of peers from participating orgs
     peers:
-      peer1.magnetocorp.com:
+      peer1.AS1.com:
         # [Optional]. will this peer be sent transaction proposals for endorsement? The peer must
         # have the chaincode installed. The app can also use this property to decide which peers
         # to send the chaincode install request. Default: true
@@ -108,10 +108,10 @@ channels:
 #
 organizations:
   Org1:
-    mspid: magnetocorpMSP
+    mspid: AS1MSP
 
     peers:
-      - peer1.magnetocorp.com
+      - peer1.AS1.com
 
     # [Optional]. Certificate Authorities issue certificates for identification purposes in a Fabric based
     # network. Typically certificates provisioning is done in a separate process outside of the
@@ -119,7 +119,7 @@ organizations:
     # dynamic certificate management (enroll, revoke, re-enroll). The following section is only for
     # Fabric-CA servers.
     certificateAuthorities:
-      - ca-magnetocorp
+      - ca-AS1
 
     # [Optional]. If the application is going to make requests that are reserved to organization
     # administrators, including creating/updating channels, installing/instantiating chaincodes, it
@@ -129,9 +129,9 @@ organizations:
     # this way. The SDK should allow applications to set the org admin identity via APIs, and only use
     # this route as an alternative when it exists.
     adminPrivateKey:
-      path: commercial-paper/organization/magnetocorp/users/Admin@magnetocorp/keystore/9022d671ceedbb24af3ea69b5a8136cc64203df6b9920e26f48123fcfcb1d2e9_sk
+      path: communities/organization/AS1/users/Admin@AS1/keystore/9022d671ceedbb24af3ea69b5a8136cc64203df6b9920e26f48123fcfcb1d2e9_sk
     signedCert:
-      path: comercial-paper/organization/magnetocorp/users/Admin@magnetocorp.com/signcerts/Admin@magnetocorp.com-cert.pem
+      path: communities/organization/AS1/users/Admin@AS1.com/signcerts/Admin@AS1.com-cert.pem
 
   # the profile will contain public information about organizations other than the one it belongs to.
   # These are necessary information to make transaction lifecycles work, including MSP IDs and
@@ -145,9 +145,9 @@ organizations:
     certificateAuthorities:
       - ca-digibank
     adminPrivateKey:
-      path: commercial-paper/organization/digibank/users/Admin@digibank.com/keystore/5a983ddcbefe52a7f9b8ee5b85a590c3e3a43c4ccd70c7795bec504e7f74848d_sk
+      path: communities/organization/digibank/users/Admin@digibank.com/keystore/5a983ddcbefe52a7f9b8ee5b85a590c3e3a43c4ccd70c7795bec504e7f74848d_sk
     signedCert:
-      path: commercial-paper/organization/digibank/users/Admin@digibank.com/signcerts/Admin@digibank.com-cert.pem
+      path: communities/organization/digibank/users/Admin@digibank.com/signcerts/Admin@digibank.com-cert.pem
 
 #
 # List of orderers to send transaction and channel create/update requests to. For the time
@@ -155,7 +155,7 @@ organizations:
 # SDK is implementation specific. Consult each SDK's documentation for its handling of orderers.
 #
 orderers:
-  orderer.magnetocorp.com:
+  orderer.AS1.com:
     url: grpcs://localhost:7050
 
     # these are standard properties defined by the gRPC library
@@ -164,23 +164,23 @@ orderers:
       ssl-target-name-override: orderer.example.com
 
     tlsCACerts:
-      path: comercial-paper/organization/magnetocorp/orderer/orderer.magnetocorp.com/tlscacerts/example.com-cert.pem
+      path: communities/organization/AS1/orderer/orderer.AS1.com/tlscacerts/example.com-cert.pem
 
 #
 # List of peers to send various requests to, including endorsement, query
 # and event listener registration.
 #
 peers:
-  peer1.magnetocorp.com:
+  peer1.AS1.com:
     # this URL is used to send endorsement and query requests
     url: grpcs://localhost:7051
 
     grpcOptions:
-      ssl-target-name-override: peer1.magnetocorp.com
+      ssl-target-name-override: peer1.AS1.com
       request-timeout: 120
 
     tlsCACerts:
-      path: certificates/magnetocorp/magnetocorp.com-cert.pem
+      path: certificates/AS1/AS1.com-cert.pem
 
   peer1.digibank.com:
     url: grpcs://localhost:8051
@@ -202,7 +202,7 @@ certificateAuthorities:
     httpOptions:
       verify: false
     tlsCACerts:
-      path: commercial-paper/organization/magnetocorp/ca/magnetocorp.com-cert.pem
+      path: communities/organization/AS1/ca/AS1.com-cert.pem
 
     # Fabric-CA supports dynamic user enrollment via REST APIs. A "root" user, a.k.a registrar, is
     # needed to enroll and invoke new users.
@@ -210,14 +210,14 @@ certificateAuthorities:
       - enrollId: admin
         enrollSecret: adminpw
     # [Optional] The optional name of the CA.
-    caName: ca-magnetocorp
+    caName: ca-AS1
 
   ca-org2:
     url: https://localhost:8054
     httpOptions:
       verify: false
     tlsCACerts:
-      path: commercial-paper/organization/digibank/ca/digibank.com-cert.pem
+      path: communities/organization/digibank/ca/digibank.com-cert.pem
     registrar:
       - enrollId: admin
         enrollSecret: adminpw
