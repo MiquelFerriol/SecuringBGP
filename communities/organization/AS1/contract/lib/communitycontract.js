@@ -35,6 +35,17 @@ class CommunityContract extends Contract {
         super('securingBGP.community');
     }
 
+    async existsCommunity(ctx, autonomousSystem, communityNumber){
+        try{
+            let communityKey = Community.makeKey([autonomousSystem, communityNumber]);
+            await ctx.communityList.getCommunity(communityKey);
+            return true.toString()
+        }
+        catch(error){
+            return false
+        }
+    }
+
     /**
      * Define a custom context for community
     */
@@ -114,6 +125,10 @@ class CommunityContract extends Contract {
         // Update the paper
         await ctx.communityList.updatePaper(paper);*/
         return community.toBuffer();
+    }
+
+    async throwError(){
+        throw new Error('A random error');
     }
 
 }
