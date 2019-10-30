@@ -21,4 +21,7 @@ docker exec cliAS1 peer chaincode install -n communitycontract -v 0 -p /opt/gopa
 docker exec cliAS1 peer chaincode instantiate -n communitycontract -v 0 -l node -c '{"Args":["securingBGP.community:instantiate"]}' -C mychannel -P "AND ('Org1MSP.member')"
 
 cd ~/SecuringBGP/communities/organization/AS1/application/
-node query.js
+node bulkQuery.js
+
+
+docker exec -it peer0.org1.example.com du -ks /var/hyperledger/production/ledgersData/
