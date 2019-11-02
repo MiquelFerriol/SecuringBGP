@@ -54,18 +54,18 @@ async function main() {
 
         console.log('Submitting transaction.');
 
-        const issueResponse = await contract.submitTransaction('getCommunity', 'AS125', '33', 'NO_EXPORT', 'USA');
+        const issueResponse = await contract.submitTransaction('communityBulkTransfer', ['AS15','AS16'].toString(), ['33','33'].toString(), ['NO_EXPORT','NO_EXPORT'].toString(), ['USA','USA'].toString());
 
         // process response
         console.log('Process issue transaction response.');
 
         let community = Community.fromBuffer(issueResponse);
 
+        console.log(community);
         console.log(`${community.autonomousSystem}:${community.communityNumber} -> Rule: ${community.rule} To/Value: ${community.to}`);
-        console.log('Transaction complete.');
+
 
     } catch (error) {
-
         console.log(`Error processing transaction. ${error}`);
         console.log(error.stack);
 
@@ -77,6 +77,7 @@ async function main() {
 
     }
 }
+
 main().then(() => {
 
     console.log('NewCommunity program complete.');

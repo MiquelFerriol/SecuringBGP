@@ -35,6 +35,17 @@ class CommunityContract extends Contract {
         super('securingBGP.community');
     }
 
+    async existsCommunity(ctx, autonomousSystem, communityNumber){
+        try{
+            let communityKey = Community.makeKey([autonomousSystem, communityNumber]);
+            await ctx.communityList.getCommunity(communityKey);
+            return true.toString()
+        }
+        catch(error){
+            return false
+        }
+    }
+
     /**
      * Define a custom context for community
     */
@@ -74,53 +85,53 @@ class CommunityContract extends Contract {
         return community.toBuffer();
     }
 
+    async communityBulkTransfer(ctx, autonomousSystem, communityNumber, rule, to, value) {
+        console.log("autonomousSystem")
+        console.log(autonomousSystem)
+        autonomousSystem = autonomousSystem.split(",");
+        communityNumber = communityNumber.split(",");
+        rule = rule.split(",");
+        to = to.split(",");
+        // create an instance of the paper
+        var communitites = [];
+
+        for (var i = 0; i < autonomousSystem.length; i++) {
+
+            let unixts = Math.round((new Date()).getTime() / 1000);
+
+            let community = Community.createInstance(autonomousSystem[i], communityNumber[i], rule[i], to[i], value, unixts);
+            communitites.push(community)
+            // Add the paper to the list of all similar commercial papers in the ledger world state
+            await ctx.communityList.addCommunity(community);
+
+        }
+        // Must return a serialized paper to caller of smart contract
+        return Buffer.from(JSON.stringify(communitites));
+    }
+
     /**
      * Modify a community
      *
      * @param {Context} ctx the transaction context
-     * @param {String} issuer commercial paper issuer
-     * @param {Integer} paperNumber paper number for this issuer
-     * @param {String} currentOwner current owner of paper
-     * @param {String} newOwner new owner of paper
-     * @param {Integer} price price paid for this paper
-     * @param {String} purchaseDateTime time paper was purchased (i.e. traded)
+     * @param {Integer} autonomousSystem autonomousSystem that creates the community
+     * @param {Integer} communityNumber community number
     */
     async getCommunity(ctx, autonomousSystem, communityNumber) {
 
-        // Retrieve the current paper using key fields provided
         let communityKey = Community.makeKey([autonomousSystem, communityNumber]);
         let community = await ctx.communityList.getCommunity(communityKey);
 
         if(community == null){
             throw new Error('Community ' + autonomousSystem + ':' + communityNumber + ' does not exist');
         }
-        /*// Validate current owner
-        if (paper.getOwner() !== currentOwner) {
-            throw new Error('Paper ' + issuer + paperNumber + ' is not owned by ' + currentOwner);
-        }
 
-        // First buy moves state from ISSUED to TRADING
-        if (paper.isIssued()) {
-            paper.setTrading();
-        }
-
-        // Check paper is not already REDEEMED
-        if (paper.isTrading()) {
-            paper.setOwner(newOwner);
-        } else {
-            throw new Error('Paper ' + issuer + paperNumber + ' is not trading. Current state = ' +paper.getCurrentState());
-        }
-
-        // Update the paper
-        await ctx.communityList.updatePaper(paper);*/
         return community.toBuffer();
+    }
+
+    async throwError(){
+        throw new Error('A random error');
     }
 
 }
 
 module.exports = CommunityContract;
-/*
-let cc = new CommunityContract();
-
-let ctx = new CommunityContext();
-cc.newCommunity(ctx, 'autonomousSystem', 'communityNumber', 'rule', 'to', 'value')*/
