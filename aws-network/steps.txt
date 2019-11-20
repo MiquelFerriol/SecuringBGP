@@ -1,0 +1,6 @@
+docker stop $(docker ps -aq)
+docker rm $(docker ps -aq)
+docker-compose -f docker-compose-orderer.yml up -d
+docker-compose -f docker-compose-node1.yml up -d
+docker-compose -f docker-compose-node2.yml up -d
+docker exec -e "CORE_PEER_MSPCONFIGPATH=/var/hyperledger/users/Admin@as2.example.com/msp" peer0.as2.example.com peer channel create -o orderer.example.com:7050 -c channelall -f /var/hyperledger/configs/channelall.tx
