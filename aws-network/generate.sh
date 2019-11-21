@@ -21,7 +21,7 @@ if [ "$?" -ne 0 ]; then
 fi
 
 # generate genesis block for orderer
-configtxgen -profile BGPGenesis -outputBlock ./channel-artifacts/genesis.block -channelID $CHANNEL_NAME
+configtxgen -profile BGPGenesis -outputBlock ./channel-artifacts/genesis.block
 if [ "$?" -ne 0 ]; then
   echo "Failed to generate orderer genesis block..."
   exit 1
