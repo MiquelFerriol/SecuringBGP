@@ -13,8 +13,8 @@ services:
         environment:
             - ORDERER_HOST=orderer.example.com
         extra_hosts:
-            - "peer0.as1.example.com:34.244.62.107"
-            - "peer0.as2.example.com:52.50.60.1"
+            - "peer0.as1.example.com:34.254.251.6"
+            - "peer0.as2.example.com:52.48.208.159"
         volumes:
             - ../crypto-config/ordererOrganizations/example.com/orderers/orderer.example.com/msp:/var/hyperledger/msp
             - ../crypto-config/ordererOrganizations/example.com/orderers/orderer.example.com/tls:/var/hyperledger/tls

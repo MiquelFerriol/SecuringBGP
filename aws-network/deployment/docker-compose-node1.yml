@@ -27,8 +27,8 @@ services:
             - ../crypto-config/peerOrganizations/as1.example.com/users:/var/hyperledger/users
             - ../channel-artifacts/:/var/hyperledger/configs
         extra_hosts:
-            - "orderer.example.com:63.33.197.138"
-            - "peer0.as2.example.com:52.50.60.1"
+            - "orderer.example.com:52.18.69.46"
+            - "peer0.as2.example.com:52.48.208.159"
         networks:
           fabric:
              aliases:
