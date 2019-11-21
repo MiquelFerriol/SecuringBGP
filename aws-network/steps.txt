@@ -1,5 +1,10 @@
-cd ~/SecuringBGP/aws-network/deployment/
+export PATH=$HOME/fabric-samples/bin:$PATH
+./generate.sh
 
+cd ~/SecuringBGP
+sudo git pull
+
+cd ~/SecuringBGP/aws-network/deployment/
 docker stop $(docker ps -aq)
 docker rm $(docker ps -aq)
 
