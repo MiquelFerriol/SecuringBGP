@@ -75,6 +75,7 @@ services:
             - $GOPATH/src/github.com/hyperledger/fabric/:/opt/gopath/src/github.com/hyperledger/fabric/
             - ../crypto-config:/opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/
             - ../channel-artifacts:/opt/gopath/src/github.com/hyperledger/fabric/peer/channel-artifacts/
+            - ./../../contract:/opt/gopath/src/github.com/contract
         depends_on:
           - peer0.as1.example.com
         networks:

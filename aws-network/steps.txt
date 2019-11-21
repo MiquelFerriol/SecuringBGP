@@ -1,19 +1,27 @@
-
-./generate.sh
+docker stop $(docker ps -aq)
+docker rm $(docker ps -aq)
 
 cd ~/SecuringBGP
 sudo git pull
 
 cd ~/SecuringBGP/aws-network/deployment/
-docker stop $(docker ps -aq)
-docker rm $(docker ps -aq)
+
 
 #ORDERER
 docker-compose -f docker-compose-orderer.yml up -d
+
 #AS1
+#NOMES EL PRIMER COP PER CREAR EL BLOC DEL CANAL!
+docker exec -e "CORE_PEER_MSPCONFIGPATH=/var/hyperledger/users/Admin@as1.example.com/msp" peer0.as1.example.com peer channel create -o orderer.example.com:7050 -c channelall -f /var/hyperledger/configs/channelall.tx
+
+
 docker-compose -f docker-compose-node1.yml up -d
+docker cp channelall.block peer0.as1.example.com:/channelall.block
+docker exec -e "CORE_PEER_MSPCONFIGPATH=/var/hyperledger/users/Admin@as1.example.com/msp" peer0.as1.example.com peer channel join -b channelall.block
+
 #AS2
 docker-compose -f docker-compose-node2.yml up -d
-#AS1
-docker exec -e "CORE_PEER_MSPCONFIGPATH=/var/hyperledger/users/Admin@as1.example.com/msp" peer0.as1.example.com peer channel create -o orderer.example.com:7050 -c channelall -f /var/hyperledger/configs/channelall.tx
-docker exec -e "CORE_PEER_MSPCONFIGPATH=/var/hyperledger/users/Admin@as1.example.com/msp" peer0.as1.example.com peer channel join -b channelall.block
+docker cp channelall.block peer0.as2.example.com:/channelall.block
+docker exec -e "CORE_PEER_MSPCONFIGPATH=/var/hyperledger/users/Admin@as2.example.com/msp" peer0.as2.example.com peer channel join -b channelall.block
+
+
