@@ -18,10 +18,15 @@ docker exec -e "CORE_PEER_MSPCONFIGPATH=/var/hyperledger/users/Admin@as1.example
 docker-compose -f docker-compose-node1.yml up -d
 docker cp channelall.block peer0.as1.example.com:/channelall.block
 docker exec -e "CORE_PEER_MSPCONFIGPATH=/var/hyperledger/users/Admin@as1.example.com/msp" peer0.as1.example.com peer channel join -b channelall.block
+docker exec cli peer chaincode install -n communitycontract -v 0 -p /opt/gopath/src/github.com/contract -l node
 
+docker exec cli peer chaincode instantiate -o orderer.example.com:7050 -C channelall -n communitycontract -v 0 -l node -c '{"Args":["securingBGP.community:instantiate"]}' -P "OR ('as1MSP.member', 'as2MSP.member')"
+
+
+docker exec -it cli peer chaincode instantiate -o orderer.example.com:7050 -C channelall -n communitycontract -v v0 -c '{"Args": ["a", "100"]}' -P "OR('Org1MSP.member', 'Org2MSP.member','Org3MSP.member')"
 #AS2
 docker-compose -f docker-compose-node2.yml up -d
 docker cp channelall.block peer0.as2.example.com:/channelall.block
 docker exec -e "CORE_PEER_MSPCONFIGPATH=/var/hyperledger/users/Admin@as2.example.com/msp" peer0.as2.example.com peer channel join -b channelall.block
-
+docker exec cli peer chaincode install -n communitycontract -v 0 -p /opt/gopath/src/github.com/contract -l node
 

@@ -21,7 +21,7 @@ cd ~/SecuringBGP/communities/organization/AS1/configuration/cli/
 docker-compose -f docker-compose.yml up -d cliAS1
 
 cd ~/SecuringBGP/communities/organization/AS1/contract
-docker exec cli peer chaincode install -n communitycontract -v 0 -p /opt/gopath/src/github.com/contract -l node
+docker exec cliAS1 peer chaincode install -n communitycontract -v 0 -p /opt/gopath/src/github.com/contract -l node
 docker exec cliAS1 peer chaincode instantiate -n communitycontract -v 0 -l node -c '{"Args":["securingBGP.community:instantiate"]}' -C mychannel -P "AND ('Org1MSP.member')"
 
 cd ~/SecuringBGP/communities/organization/AS1/application/
