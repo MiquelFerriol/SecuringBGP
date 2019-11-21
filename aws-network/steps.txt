@@ -1,4 +1,4 @@
-export PATH=$HOME/fabric-samples/bin:$PATH
+
 ./generate.sh
 
 cd ~/SecuringBGP
