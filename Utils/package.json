@@ -1,0 +1,13 @@
+{
+  "name": "getpublicip-js",
+  "version": "0.0.1",
+  "description": "Query public AWS-EC2 IP",
+  "main": "getPublicIP.js",
+  "engines": {
+    "node": ">=8",
+    "npm": ">=5"
+  },
+  "dependencies": {
+    "aws-sdk": "^2.577.0"
+  }
+}
