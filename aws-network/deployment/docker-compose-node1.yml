@@ -27,8 +27,8 @@ services:
             - ../crypto-config/peerOrganizations/as1.example.com/users:/var/hyperledger/users
             - ../channel-artifacts/:/var/hyperledger/configs
         extra_hosts:
-            - "orderer.example.com:52.18.69.46"
-            - "peer0.as2.example.com:52.48.208.159"
+            - "orderer.example.com:${ORDERER_IP}"
+            - "peer0.as2.example.com:${AS2_IP}"
         networks:
           fabric:
              aliases:
@@ -66,7 +66,7 @@ services:
           - CORE_PEER_MSPCONFIGPATH=/opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/as1.example.com/users/Admin@as1.example.com/msp
           - CORE_CHAINCODE_KEEPALIVE=10
         extra_hosts:
-          - "orderer.example.com:52.18.69.46"
+          - "orderer.example.com:${ORDERER_IP}"
         working_dir: /opt/gopath/src/github.com/hyperledger/fabric/peer
         command: /bin/bash
         volumes:
