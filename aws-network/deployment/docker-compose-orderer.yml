@@ -19,6 +19,7 @@ services:
             - ../crypto-config/ordererOrganizations/example.com/orderers/orderer.example.com/msp:/var/hyperledger/msp
             - ../crypto-config/ordererOrganizations/example.com/orderers/orderer.example.com/tls:/var/hyperledger/tls
             - ../channel-artifacts/:/var/hyperledger/configs
+            - ../persistence/orderer/:/var/hyperledger/production
         networks:
           fabric:
              aliases:

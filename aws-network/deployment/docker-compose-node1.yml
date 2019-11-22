@@ -26,6 +26,7 @@ services:
             - ../crypto-config/peerOrganizations/as1.example.com/peers/peer0.as1.example.com/tls:/var/hyperledger/tls
             - ../crypto-config/peerOrganizations/as1.example.com/users:/var/hyperledger/users
             - ../channel-artifacts/:/var/hyperledger/configs
+            - ../persistence/peer/:/var/hyperledger/production
         extra_hosts:
             - "orderer.example.com:${ORDERER_IP}"
             - "peer0.as2.example.com:${AS2_IP}"
@@ -45,6 +46,8 @@ services:
         environment:
           - COUCHDB_USER=
           - COUCHDB_PASSWORD=
+        volumes:
+          - ../persistence/couchdb/:/var/hyperledger/production
         ports:
           - 5984:5984
         networks:

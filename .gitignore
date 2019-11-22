@@ -1,9 +1,7 @@
-communities/organization/AS1/application/node_modules/
-communities/organization/AS1/contract/node_modules/
-communities/organization/AS1/identity/user/
-communities/organization/digibank/application/node_modules/
-communities/organization/digibank/contract/node_modules/
-communities/organization/digibank/identity/user/
+node_modules
 package-lock.json
+aws-network/persistence/peer/*
+aws-network/persistence/couchdb/*
+aws-network/persistence/orderer/*
 .vscode
 \.idea/
