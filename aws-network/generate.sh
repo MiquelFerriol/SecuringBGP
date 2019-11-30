@@ -33,3 +33,39 @@ if [ "$?" -ne 0 ]; then
   echo "Failed to generate channel configuration transaction..."
   exit 1
 fi
+
+# generate channel 1234
+configtxgen -profile Channel1234 -outputCreateChannelTx ./channel-artifacts/channel1234.tx -channelID channel1234
+if [ "$?" -ne 0 ]; then
+  echo "Failed to generate channel configuration transaction..."
+  exit 1
+fi
+
+# generate channel 345
+configtxgen -profile Channel345 -outputCreateChannelTx ./channel-artifacts/channel345.tx -channelID channel345
+if [ "$?" -ne 0 ]; then
+  echo "Failed to generate channel configuration transaction..."
+  exit 1
+fi
+
+# generate channel 369
+configtxgen -profile Channel369 -outputCreateChannelTx ./channel-artifacts/channel369.tx -channelID channel369
+if [ "$?" -ne 0 ]; then
+  echo "Failed to generate channel configuration transaction..."
+  exit 1
+fi
+
+# generate channel 469
+configtxgen -profile Channel469 -outputCreateChannelTx ./channel-artifacts/channel469.tx -channelID channel469
+if [ "$?" -ne 0 ]; then
+  echo "Failed to generate channel configuration transaction..."
+  exit 1
+fi
+
+# generate channel 4710
+configtxgen -profile Channel4710 -outputCreateChannelTx ./channel-artifacts/channel4710.tx -channelID channel4710
+if [ "$?" -ne 0 ]; then
+  echo "Failed to generate channel configuration transaction..."
+  exit 1
+fi
+
