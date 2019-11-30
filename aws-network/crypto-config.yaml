@@ -1,10 +1,11 @@
+
 OrdererOrgs:
   - Name: Orderer
     Domain: example.com
     Specs:
-    - Hostname: orderer
+      - Hostname: orderer
 PeerOrgs:
-  - Name: as1 
+  - Name: as1
     Domain: as1.example.com
     Template:
       Count: 1
@@ -12,6 +13,54 @@ PeerOrgs:
       Count: 1
   - Name: as2
     Domain: as2.example.com
+    Template:
+      Count: 1
+    Users:
+      Count: 1
+  - Name: as3
+    Domain: as3.example.com
+    Template:
+      Count: 1
+    Users:
+      Count: 1
+  - Name: as4
+    Domain: as4.example.com
+    Template:
+      Count: 1
+    Users:
+      Count: 1
+  - Name: as5
+    Domain: as5.example.com
+    Template:
+      Count: 1
+    Users:
+      Count: 1
+  - Name: as6
+    Domain: as6.example.com
+    Template:
+      Count: 1
+    Users:
+      Count: 1
+  - Name: as7
+    Domain: as7.example.com
+    Template:
+      Count: 1
+    Users:
+      Count: 1
+  - Name: as8
+    Domain: as8.example.com
+    Template:
+      Count: 1
+    Users:
+      Count: 1
+  - Name: as9
+    Domain: as9.example.com
+    Template:
+      Count: 1
+    Users:
+      Count: 1
+  - Name: as10
+    Domain: as10.example.com
     Template:
       Count: 1
     Users:

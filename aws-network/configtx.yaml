@@ -16,6 +16,46 @@ Organizations:
         ID: as2MSP
         MSPDir: ./crypto-config/peerOrganizations/as2.example.com/msp
 
+    - &as3
+        Name: as3MSP
+        ID: as3MSP
+        MSPDir: ./crypto-config/peerOrganizations/as3.example.com/msp
+
+    - &as4
+        Name: as4MSP
+        ID: as4MSP
+        MSPDir: ./crypto-config/peerOrganizations/as4.example.com/msp
+
+    - &as5
+        Name: as5MSP
+        ID: as5MSP
+        MSPDir: ./crypto-config/peerOrganizations/as5.example.com/msp
+
+    - &as6
+        Name: as6MSP
+        ID: as6MSP
+        MSPDir: ./crypto-config/peerOrganizations/as6.example.com/msp
+
+    - &as7
+        Name: as7MSP
+        ID: as7MSP
+        MSPDir: ./crypto-config/peerOrganizations/as7.example.com/msp
+
+    - &as8
+        Name: as8MSP
+        ID: as8MSP
+        MSPDir: ./crypto-config/peerOrganizations/as8.example.com/msp
+
+    - &as9
+        Name: as9MSP
+        ID: as9MSP
+        MSPDir: ./crypto-config/peerOrganizations/as9.example.com/msp
+
+    - &as10
+        Name: as10MSP
+        ID: as10MSP
+        MSPDir: ./crypto-config/peerOrganizations/as10.example.com/msp
+
 Orderer: &OrdererDefaults
 
     OrdererType: solo
@@ -45,6 +85,14 @@ Profiles:
                 Organizations:
                     - *as1
                     - *as2
+                    - *as3
+                    - *as4
+                    - *as5
+                    - *as6
+                    - *as7
+                    - *as8
+                    - *as9
+                    - *as10
     ChannelAll:
         Consortium: SampleConsortium
         Application:
@@ -52,3 +100,11 @@ Profiles:
             Organizations:
                 - *as1
                 - *as2
+                - *as3
+                - *as4
+                - *as5
+                - *as6
+                - *as7
+                - *as8
+                - *as9
+                - *as10

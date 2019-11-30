@@ -15,6 +15,14 @@ services:
         extra_hosts:
             - "peer0.as1.example.com:${AS1_IP}"
             - "peer0.as2.example.com:${AS2_IP}"
+            - "peer0.as3.example.com:${AS3_IP}"
+            - "peer0.as4.example.com:${AS4_IP}"
+            - "peer0.as5.example.com:${AS5_IP}"
+            - "peer0.as6.example.com:${AS6_IP}"
+            - "peer0.as7.example.com:${AS7_IP}"
+            - "peer0.as8.example.com:${AS8_IP}"
+            - "peer0.as9.example.com:${AS9_IP}"
+            - "peer0.as10.example.com:${AS10_IP}"
         volumes:
             - ../crypto-config/ordererOrganizations/example.com/orderers/orderer.example.com/msp:/var/hyperledger/msp
             - ../crypto-config/ordererOrganizations/example.com/orderers/orderer.example.com/tls:/var/hyperledger/tls

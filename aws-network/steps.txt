@@ -43,3 +43,17 @@ docker exec cli peer chaincode install -n communitycontract -v 0 -p /opt/gopath/
 #PROVES AMB QUERY
 docker exec cli peer chaincode invoke -o orderer.example.com:7050 -C channelall -n communitycontract -c '{"Args":["newCommunity","123", "NO_EXPORT","USA"]}'
 docker exec cli peer chaincode invoke -o orderer.example.com:7050 -C channelall -n communitycontract -c '{"Args":["getCommunity","123", "NO_EXPORT","USA"]}'
+
+
+extra_hosts:
+          - "orderer.example.com:${ORDERER_IP}"
+          - "peer0.as1.example.com:${AS1_IP}"
+          - "peer0.as2.example.com:${AS2_IP}"
+          - "peer0.as3.example.com:${AS3_IP}"
+          - "peer0.as4.example.com:${AS4_IP}"
+          - "peer0.as5.example.com:${AS5_IP}"
+          - "peer0.as6.example.com:${AS6_IP}"
+          - "peer0.as7.example.com:${AS7_IP}"
+          - "peer0.as8.example.com:${AS8_IP}"
+          - "peer0.as9.example.com:${AS9_IP}"
+          - "peer0.as10.example.com:${AS10_IP}"
