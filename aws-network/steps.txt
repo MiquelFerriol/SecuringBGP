@@ -1,10 +1,14 @@
 docker stop $(docker ps -aq)
 docker rm $(docker ps -aq)
 
+
 cd ~/SecuringBGP
 sudo git pull
 
 cd ~/SecuringBGP/aws-network/deployment/
+
+#HARD RESET
+sudo rm -r persistence
 
 
 #ORDERER
