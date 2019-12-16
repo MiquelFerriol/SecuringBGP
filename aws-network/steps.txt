@@ -51,6 +51,15 @@ docker exec cli peer chaincode invoke -o orderer.example.com:7050 -C channelall 
 docker exec cli peer chaincode invoke -o orderer.example.com:7050 -C channelall -n communitycontract -c '{"Args":["getCommunity","123", "NO_EXPORT","USA"]}'
 
 
+
+
+
+
+##Download real BGP Communities files
+mkdir realCommunities
+aws s3 cp s3://realbgpcommunities/ ./ --recursive
+
+
 extra_hosts:
           - "orderer.example.com:${ORDERER_IP}"
           - "peer0.as1.example.com:${AS1_IP}"
