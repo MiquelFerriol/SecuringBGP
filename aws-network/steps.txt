@@ -3,6 +3,7 @@ docker rm $(docker ps -aq)
 
 
 cd ~/SecuringBGP
+sudo git checkout master
 sudo git pull
 
 cd ~/SecuringBGP/aws-network/deployment/
@@ -22,6 +23,7 @@ docker-compose -f docker-compose-node1.yml up -d
 docker exec -e "CORE_PEER_MSPCONFIGPATH=/var/hyperledger/users/Admin@as1.example.com/msp" peer0.as1.example.com peer channel create -o orderer.example.com:7050 -c channelall -f /var/hyperledger/configs/channelall.tx
 
 sudo docker cp peer0.as1.example.com:channelall.block .
+
 # AQUEST BLOC QUE ES COPIA S'HA DENVIAR A CADA PEER
 
 docker exec -e "CORE_PEER_MSPCONFIGPATH=/var/hyperledger/users/Admin@as1.example.com/msp" peer0.as1.example.com peer channel join -b channelall.block
