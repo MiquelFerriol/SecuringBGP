@@ -81,4 +81,4 @@ services:
     depends_on:
       - peer0.as8.example.com
     networks:
-      - fabricversion: '2'
+      - fabric
