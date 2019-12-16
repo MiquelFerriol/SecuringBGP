@@ -20,6 +20,7 @@ ec2.describeInstances({}, function(err, data) {
 
         fs.writeFile("../aws-network/deployment/.env", buf, (err) => {
             if (err) console.log(err);
+            console.log("Writting into file");
             console.log(buf);
         });
     }
