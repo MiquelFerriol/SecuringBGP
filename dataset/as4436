@@ -32,14 +32,11 @@ peercontrol:
     times: 3
     community: 3111
 other:
-- what: ""
-  action: ""
-  from: ""
-  community: 0
 - what: Nullroutetrafficprefix
   action: ""
   from: ""
   community: 666
+info:
 - what: currentregion
   action: Doexport
   from: ""

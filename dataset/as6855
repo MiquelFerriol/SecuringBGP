@@ -21,11 +21,7 @@ peercontrol:
     asn: 0
     community: 1112
   prepend: []
-other:
-- what: ""
-  action: ""
-  from: ""
-  community: 0
+info:
 - what: Routespeering
   action: ""
   from: SIX

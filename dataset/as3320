@@ -13,11 +13,7 @@ noexport:
     peers: 'AS3320 peer '
     community: 65003
   setlocpref: []
-other:
-- what: ""
-  action: ""
-  from: ""
-  community: 0
+info:
 - what: ImportedEurope
   action: ""
   from: ""

@@ -137,11 +137,7 @@ peercontrol:
     asn: 7922
     community: 3300
   prepend: []
-other:
-- what: ""
-  action: ""
-  from: ""
-  community: 0
+info:
 - what: Route
   action: islearned
   from: NA
